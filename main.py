@@ -1,7 +1,11 @@
+from turtle import clear
 from convertation_utils import *
+from directory_utils import clear_workspace
+
 from tkinter import *
 from tkinter import filedialog
 from sys import exit
+
 
 def speech_to_text(parsed_speech_path: str) -> None:
     '''
@@ -18,13 +22,12 @@ def speech_to_text(parsed_speech_path: str) -> None:
     f.close()
 
 
+@clear_workspace
 def convert():
     video_file_path = filedialog.askopenfilename(initialdir = "/",
                                            title = "Select a file")
     video_to_speech(video_file_path)
     speech_to_text('parsed_speech.wav')
-    clear_workspace()
-    exit()
 
 
 class App(Tk):
@@ -39,6 +42,7 @@ class App(Tk):
                             width = 27,
                             command=convert)
         self.button.grid(column = 1, row = 1, padx = 10, pady= 10)
+
 
 if __name__ == '__main__':
     app = App()

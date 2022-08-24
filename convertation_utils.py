@@ -2,7 +2,6 @@ import wave, math, contextlib
 import speech_recognition as sr
 from moviepy.editor import AudioFileClip
 from tqdm import tqdm
-import os
 
 
 def video_to_speech(video_path: str) -> AudioFileClip:
@@ -28,7 +27,4 @@ def parse_speech_duration(parsed_speech_path: str) -> float:
     total_duration = math.ceil(duration / 60)
     return total_duration
 
-
-def clear_workspace():
-    os.system('rm parsed_speech.wav')
 
