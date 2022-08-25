@@ -1,4 +1,5 @@
 .*
+venv
 parsed_speech.wav
 transcription.txt
 __pycache__
