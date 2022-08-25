@@ -1,9 +1,7 @@
-venv
+.*
 parsed_speech.wav
 transcription.txt
-'__pycache__/UI.cpython-39.pyc'
-'__pycache__/controller.cpython-39.pyc'
-'__pycache__/convertation_utils.cpython-39.pyc'
-'__pycache__/directory_utils.cpython-39.pyc'
-'__pycache__/main.cpython-39.pyc'
-'__pycache__/parameters.cpython-39.pyc'
+__pycache__
+build
+dist
+main.spec

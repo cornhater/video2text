@@ -20,8 +20,3 @@ class App(Tk):
         self.t.pack(padx=10, pady=7)
 
         self.mainloop()
-
-
-if __name__ == '__main__':
-    app = App()
-

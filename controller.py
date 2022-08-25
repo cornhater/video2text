@@ -3,6 +3,7 @@ from directory_utils import *
 from parameters import *
 
 from tkinter import filedialog
+from tkinter import *
 
 
 @clear_workspace

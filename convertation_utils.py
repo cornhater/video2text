@@ -3,6 +3,7 @@ from parameters import *
 import wave, math, contextlib
 from moviepy.editor import AudioFileClip
 import speech_recognition as sr
+from tqdm import tqdm
 
 
 def video_to_speech(video_path: str) -> AudioFileClip:
@@ -25,7 +26,7 @@ def parse_speech_duration(parsed_speech_path: str) -> float:
 def speech_to_text(parsed_speech_path: str) -> None:
     r = sr.Recognizer()
     total_duration = parse_speech_duration(parsed_speech_path)
-    for i in range(total_duration):
+    for i in tqdm(range(total_duration)):
         with sr.AudioFile(parsed_speech_path) as source:
             audio = r.record(source, offset=i*60, duration=60)
         f = open(PARSED_TEXT, "a")
