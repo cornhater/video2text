@@ -2,6 +2,8 @@ from parameters import *
 
 import wave, math, contextlib
 from moviepy.editor import AudioFileClip
+import speech_recognition as sr
+from tqdm.tk import trange
 
 
 def video_to_speech(video_path: str) -> AudioFileClip:
@@ -20,4 +22,16 @@ def parse_speech_duration(parsed_speech_path: str) -> float:
     total_duration = math.ceil(duration / 60)
     return total_duration
 
+
+def speech_to_text(parsed_speech_path: str) -> None:
+    r = sr.Recognizer()
+    total_duration = parse_speech_duration(parsed_speech_path)
+    progress = trange(0, total_duration)
+    for i in progress:
+        with sr.AudioFile(parsed_speech_path) as source:
+            audio = r.record(source, offset=i*60, duration=60)
+        f = open(PARSED_TEXT, "a")
+        f.write(r.recognize_google(audio, language='ru-RU'))
+        f.write(" ")
+    f.close()
 
