@@ -1,4 +1,5 @@
-from UI import App
+from controller import main
+
 
 if __name__ == '__main__':
-    app = App()
+    main()

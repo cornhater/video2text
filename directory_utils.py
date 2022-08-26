@@ -11,8 +11,9 @@ def remove(filename: str) -> None:
 def clear_workspace(func) -> None:
     '''decorator, cleaning workspace while main function working'''
     def wrapper():
-        if PARSED_TEXT in os.listdir(os.getcwd()):
-                remove(PARSED_TEXT)
+        for file in [PARSED_TEXT, PARSED_SPEECH]:
+            if file in os.listdir(os.getcwd()):
+                remove(file)
         func()
         remove(PARSED_SPEECH)
     return wrapper
